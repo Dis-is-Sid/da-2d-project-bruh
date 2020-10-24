@@ -23,9 +23,9 @@ public class movetodee : MonoBehaviour
         
 
         if (Input.GetButtonDown("Jump") && isgrounded())
-		{
+		
             rb.velocity = Vector2.up * jumpforce;
-        }
+        
 
         // for movement that does not suck
          Vector3 movement = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
@@ -33,16 +33,19 @@ public class movetodee : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.LeftShift))
 		{
-            dash();
+            dash();     
+
+
         }
 
     }
     void dash()
 	{
-        rb.velocity = Vector2.right * dashforce * Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(1,0) * dashforce * Input.GetAxis("Horizontal");
+        //rb.velocity = Vector2.right * dashforce * Input.GetAxis("Horizontal");
     }
 
-private bool isgrounded()
+    private bool isgrounded()
     {
         return Physics2D.Raycast(transform.position, Vector3.down, 1,platformlayer);
     }
